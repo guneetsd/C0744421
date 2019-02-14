@@ -8,7 +8,7 @@
 
 }
 var input = prompt("Input your Number!");
-document.write(addNumbers(input));*/
+document.write(addNumbers(input));
 
 var rows = prompt("How many rows for your multiplicatio table?");
 var cols = prompt("How many columns for your multiplicatio table?");
@@ -36,5 +36,11 @@ function createTable(rows, cols) {
     output = output + "</table>";
     document.write(output);
 
-}
+}*/
+function trigger() {
+    document.getElementById("hover").addEventListener("mouseover", popup);
+    function popup() {
+        alert("welcome to my webpage!!");
+    }
 
+}
