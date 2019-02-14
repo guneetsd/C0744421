@@ -4,18 +4,45 @@
     <meta charset="utf-8" />
     <title>C0744421</title>
     <link href="css/default.css" rel="stylesheet" />
-    <style>
-        p {
-            font-size: 50px;
-            position: fixed;
-            left: 550px;
-            top: 300px;
-        }
-    </style>
 </head>
-<body onload="trigger();">
-    <p id="hover">Welcome!!</p>
-    <div>Content goes here!</div>
+<body>
+
     <script src="js/main.js"></script>
+    <table id="table1">
+        <tr>
+            <td>First Name:</td>
+            <td><input type="text" id="first" onkeyup="validate();" /></td>
+            <td><div id="errFirst"></div></td>
+        </tr>
+        <tr>
+            <td>Last Nmae:</td>
+            <td><input type="text" id="last" onkeyup="validate();" /></td>
+            <td><div id="errLast"></div></td>
+        </tr>
+        <tr>
+            <td>Email:</td>
+            <td><input type="text" id="email" onkeyup="validate();" /></td>
+        </tr>
+        <tr>
+            <td>UserId:</td>
+            <td><input type="text" id="uid" onkeyup="validate();" /></td>
+            <td><div id="errrUid"></div></td>
+        </tr>
+        </tr>
+        <tr>
+            <td>Password:</td>
+            <td><input type="password" id="password" onkeyup="validate();" /></td>
+            <td><div id="errPassword"></div></td>
+        </tr>
+        <tr>
+            <td>Confirm password:</td>
+            <td><input type="password" id="confirm" onkeyup="validate();" /></td>
+            <td><div id="errConfirm"></div></td>
+        </tr>
+        <tr>
+            <td><input type="button" id="create" value="create" onclick="" onkeyup="validate();finalValidate();" /></td>
+            <td><div id="errFinal"></div></td>
+        </tr>
+    </table>
 </body>
 </html>

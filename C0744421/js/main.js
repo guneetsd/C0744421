@@ -1,46 +1,59 @@
-﻿
-/*function addNumbers(countUpTo) {
-    sum = 0;
-    for (i = 0; i < countUpTo; i++) {
-        sum += i;
-    }
-    return sum;
+﻿var divs = new Array();
+divs[0] = "errFirst";
+divs[1] = "errLast";
+divs[2] = "errEmail";
+divs[3] = "errUid";
+divs[4] = "errPassword";
+divs[5] = "errConfirm";
 
-}
-var input = prompt("Input your Number!");
-document.write(addNumbers(input));
+function validate() {
+    var inputs = new Array();
+    inputs[0] = document.getElementById('first').value;
+    inputs[1] = document.getElementById('last').value;
+    inputs[2] = document.getElementById('email').value;
+    inputs[3] = document.getElementById('uid').value;
+    inputs[4] = document.getElementById('password').value;
+    inputs[5] = document.getElementById('confirm').value;
 
-var rows = prompt("How many rows for your multiplicatio table?");
-var cols = prompt("How many columns for your multiplicatio table?");
-if (rows == "" || rows == null)
-    rows = 10;
-if (cols == "" || cols == null)
-    cols = 10;
-createTable(rows, cols);
-function createTable(rows, cols) {
+    var errors = new Array();
+    errors[0] = "<span style = 'color:red'>Please enter your first name!</span>";
+    errors[1] = "<span style = 'color:red'>Please enter your last name!</span>";
+    errors[2] = "<span style = 'color:red'>Please enter your email!</span>";
+    errors[3] = "<span style = 'color:red'>Please enter your user id!</span>";
+    errors[4] = "<span style = 'color:red'>Please enter your password!</span>";
+    errors[5] = "<span style = 'color:red'>Please confirm your password!</span>";
 
-    var j = 1;
-    var output = "<table border ='1' width='500' cellspacing='0' cellpadding ='5'>";
-    for (i = 1; i <= rows; i++) {
-        output = output + "<tr>"
-        while (j <= cols) {
-            output = output + "<td>" + (i * j) + "</td>";
-            j = j + 1;
+    for (i in inputs) {
+        var errMessage = errors[i];
+        var div = divs[i];
+        if (inputs[i] == "")
+            document.getElementById(div).innerHTML = errMessage;
+        else if (i == 2) {
+            var atpos = inputs[i].indexOf("@");
+            var dotpos = inputs[i].lastIndexOf(".");
+            if (atpos < 1 || dotpos < atpos + 2 || dotpos + 2 >= inputs[i].length)
+                document.getElementById(div).innerHTML = "OK!";
         }
-
-        output = output + "</tr>"
-        j = 1;
-
+        else if (i == 5) {
+            var first = document.getElementById('password').value;
+            var second = document.getElementById('confirm').value;
+            if (second != first)
+                document.getElementById('errConfirm').innerHTML = "<span style = 'color:red'>Your passwords don't match!</span>";
+            else
+                document.getElementById(div).innerHTML = "OK!";
+        }
+        else
+            document.getElementById(div).innerHTML = "OK!";
     }
-
-    output = output + "</table>";
-    document.write(output);
-
-}*/
-function trigger() {
-    document.getElementById("hover").addEventListener("mouseover", popup);
-    function popup() {
-        alert("welcome to my webpage!!");
-    }
-
 }
+function finalValidate() {
+    var count = 0;
+    for (i = 0; i < 6; i++) {
+        var div = divs[i];
+
+        if (document.getElementById(div).innerHTML == "OK!")
+            count = count + 1;
+    }
+    if (count == 6)
+        document.getElementById("errFinal").innerHTML = "All the data you entered is correct";
+}                
